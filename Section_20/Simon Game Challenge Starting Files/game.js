@@ -52,13 +52,12 @@ function handleAnimationSequence(gamePattern){
     var i = 0;
     const interval = setInterval(function(){
         if(i < gamePattern.length){
-            const currentElement = $("#" + gamePattern[i]); // Capture the element
+            const currentElement = $("#" + gamePattern[i]);
             currentElement.addClass("pressed")
             makeSound(gamePattern[i])
              setTimeout(function(){
                 currentElement.removeClass("pressed")
              }, 500);
-            // setTimeout(unPress(gamePattern[i]), 500)
             i++
         }
         else{
