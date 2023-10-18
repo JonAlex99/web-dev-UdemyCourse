@@ -67,10 +67,6 @@ function handleAnimationSequence(gamePattern){
     }, 1000)
 }
 
-function unPress(id){
-    $("#" + id).removeClass("pressed");
-}
-
 function checkAnswer(){
     for(var i = 0; i < userClickedPattern.length; i++){
         if (userClickedPattern[i] !== gamePattern[i]){
