@@ -6,11 +6,11 @@ var level = -1;
 var playerCanCopy = false;
 var gameStarted = false;
 
-$(".btn").on("click", handleClick);
 $(document).on("keydown", startGame);
 
 function startGame(){
     if(!gameStarted) {
+        $(".btn").on("click", handleClick);
         randomChosenColour = null;
         gamePattern = []
         userClickedPattern = []
@@ -114,7 +114,12 @@ function makeSound(colour){
 }
 
 function gameOver(){
-    $("h1").text("Game Over");
+    $("h1").text("Game Over, Press Any Key to Restart");
+    $("body").addClass("game-over");
+    makeSound("wrong");
+    setTimeout(function(){
+        $("body").removeClass("game-over");
+    }, 200);
     $(".btn").off();
-    $(document).off();
+    gameStarted = false;
 }
