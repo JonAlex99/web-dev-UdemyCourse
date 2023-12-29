@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+
+    <h1>A website for blogs</h1>
+    <% if(locals.createdPost) {%>
+        <h2>Post successful </h2>
+    <% } %>
+    <a href="/blog/create">Create New Blog</a>
+    <% if(locals.blogPosts) { %>
+        <ul>
+            <% for (let i = 0; i < blogPosts.length; i++) { %>
+                <form action="/blog/delete/<%= i %>" method="post">
+                    <li>
+                        <a href="/blog/<%= i %>"><%= blogPosts[i].title %></a>
+                        <a href="/blog/edit/<%= i %>">Edit Blog</a>
+                        <button type="submit">Delete blog</button>
+                    </li>
+                </form>
+            <% } %>
+        </ul>
+    <% } %>
+
+<%- include("partials/footer.ejs") %>
