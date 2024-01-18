@@ -13,13 +13,28 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", { tacoRecipe: tacoData });
 });
+
+let tacoData;
 
 app.post("/recipe", (req, res) => {
   const typeOfTaco = req.body.choice;
   switch(typeOfTaco){
+    case "chicken":
+      tacoData = JSON.parse(recipeJSON)[0];
+      //things
+      break;
+    case "beef":
+      tacoData = JSON.parse(recipeJSON)[1];
+      //things 
+      break;
+    case "fish":
+      tacoData = JSON.parse(recipeJSON)[2];
+      //things
+      break;
   }
+  res.redirect("/");
   //Step 3: Write your code here to make this behave like the solution website.
   //Step 4: Add code to views/index.ejs to use the recieved recipe object.
 });
