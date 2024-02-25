@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+
+    <form id="setsForm" method="get">
+        <div class="selectors">
+            <select name="tcgsets" id="sets" onchange="changeCardSelector()">
+                <% if (locals.sets) { %>
+                    <option value="" selected disabled hidden>Choose here</option>
+                    <% for(let i=0; i < sets.length; i++) { %>
+                        <option value=<%=sets[i].id %>><%= sets[i].name %>
+                        </option>
+                    <% } %>
+                <% } else { %>
+                        <option value="error">There was an error</option>
+                <% } %>
+            </select>
+            <input id="submitSets" type="submit" value="Submit" formaction="/getSets">
+        </div>
+        <div class="card-container">
+            <img src="https://assets.tcgdex.net/en/swsh/swsh3/136/high.webp" alt="Pokémon TCG card">
+        </div>
+
+    </form>
+
+    <%- include("partials/footer.ejs") %>

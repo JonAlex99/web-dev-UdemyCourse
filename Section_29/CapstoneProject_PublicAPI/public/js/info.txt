@@ -1,0 +1,1 @@
+Vil geta fært öll scripts úr ejs í þessa möppu. locals í ejs er að gera þetta flókið

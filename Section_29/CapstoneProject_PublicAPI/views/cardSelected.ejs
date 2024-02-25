@@ -1,0 +1,11 @@
+<%- include("partials/header.ejs") %>
+
+<% if (locals.card) { %>
+    <div>
+        <img src="<%= card.image %>/high.webp">
+    </div>
+<% } else {%>
+    <h1>error</h1>
+
+ <% } %>
+<%- include("partials/footer.ejs") %>

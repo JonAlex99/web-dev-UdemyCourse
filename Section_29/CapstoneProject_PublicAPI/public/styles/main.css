@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card-container {
+    /* Set maximum height */
+    max-height: 45vh;
+    /* Ensure container takes full width */
+    width: auto;
+    /* Hide overflowing content */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.card-container img {
+    height: 45vh;
+}
+
+.header{
+    width: 100%;
+    height: 75px;
+    background-color: #121212;
+    color: white;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    border-radius: 0;
+    z-index: 1;
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: 40px;
+}
+
+.selectors{
+    text-align: center;
+}
