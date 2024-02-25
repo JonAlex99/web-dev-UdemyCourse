@@ -1,8 +1,8 @@
 <%- include("partials/header.ejs") %>
 
 <% if (locals.card) { %>
-    <div>
-        <img src="<%= card.image %>/high.webp">
+    <div class="card-container">
+        <img src="<%= card.image %>/high.webp" alt="Pokémon TCG card">
     </div>
 <% } else {%>
     <h1>error</h1>

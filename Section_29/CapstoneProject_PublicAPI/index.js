@@ -34,6 +34,7 @@ app.get("/getCard", async (req, res) => {
     const selectedCard = req.query.tcgcard
     try{
         const card = await tcgdex.fetch("cards", selectedCard)
+        console.log(card)
         res.render("cardSelected.ejs", {card: card})
     } catch (ex) {
         console.log(ex.message);

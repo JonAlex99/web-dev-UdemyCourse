@@ -16,8 +16,13 @@
     align-items: center;
     box-sizing: border-box;
 }
+
 .card-container img {
     height: 45vh;
+}
+
+.temp-hidden{
+    visibility: hidden;
 }
 
 .header{
@@ -39,4 +44,23 @@
 
 .selectors{
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.set-container{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.set-container img{
+    height: 25vh;
+    width: auto;
 }

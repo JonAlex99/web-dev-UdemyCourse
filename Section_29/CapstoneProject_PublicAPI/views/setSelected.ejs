@@ -1,31 +1,32 @@
 <%- include("partials/header.ejs") %>
 
 <% if (locals.set){ %>
-    <div class="set-container">
-        <img src="<%= set.logo %>.webp" alt="Pokémon set image">
+    <div class="container">
+        <div class="set-container">
+            <img src="<%= set.logo %>.webp" alt="Pokémon set image">
+        </div>
+        <form id="cardsForm" method="get">
+            <select name="tcgcard" id="setcard">
+                <option value="" selected disabled hidden>Choose here</option>
+                <% for(let i=0; i < set.cards.length; i++) { %>
+                    <option value=<%=set.cards[i].id %>><%= set.cards[i].name %> - #<%= set.cards[i].localId %></option>
+                <% } %>
+            </select>
+            <input id="submitCard" type="submit" value="Submit" formaction="/getCard">
+        </form>
     </div>
-    <form id="cardsForm" method="get">
-        <select name="tcgcard" id="setcard">
-            <option value="" selected disabled hidden>Choose here</option>
-            <% for(let i=0; i < set.cards.length; i++) { %>
-                <option value=<%=set.cards[i].id %>><%= set.cards[i].name %> - #<%= set.cards[i].localId %>
-                </option>
-            <% } %>
-        </select>
-        <input id="submitCard" type="submit" value="Submit" formaction="/getCard">
-    </form>
 <% } else { %>
     <div class="set-error">
         There was an error loading the set
     </div>
 <% } %>
 
-<div id="newCard" hidden>This card is hidden</div>
+<div class="card-container temp-hidden" id="newCard">This card is hidden</div>
 
 <script>
     document.querySelector("#setcard").addEventListener("change", function() {
         let newCard = document.querySelector("#newCard")
-        newCard.removeAttribute("hidden")
+        newCard.classList.remove("temp-hidden")
 
         let selectedSet = "<%=JSON.stringify(set.cards) %>"
         selectedSet = JSON.parse(selectedSet.replace(/&#34;/ig,'"'))

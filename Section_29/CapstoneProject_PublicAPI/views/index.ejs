@@ -2,7 +2,7 @@
 
     <form id="setsForm" method="get">
         <div class="selectors">
-            <select name="tcgsets" id="sets" onchange="changeCardSelector()">
+            <select name="tcgsets" id="sets">
                 <% if (locals.sets) { %>
                     <option value="" selected disabled hidden>Choose here</option>
                     <% for(let i=0; i < sets.length; i++) { %>
@@ -15,10 +15,24 @@
             </select>
             <input id="submitSets" type="submit" value="Submit" formaction="/getSets">
         </div>
-        <div class="card-container">
-            <img src="https://assets.tcgdex.net/en/swsh/swsh3/136/high.webp" alt="Pokémon TCG card">
-        </div>
 
     </form>
+
+    <!-- <div><img src="https://assets.tcgdex.net/en/base/base1/logo.webp"></div> -->
+    <div class="set-container temp-hidden" id="newCard">This card is hidden</div>
+
+<script>
+    document.querySelector("#sets").addEventListener("change", function() {
+        let newCard = document.querySelector("#newCard")
+        newCard.classList.remove("temp-hidden")
+
+
+        let selectedSet = "<%=JSON.stringify(sets) %>"
+        selectedSet = JSON.parse(selectedSet.replace(/&#34;/ig,'"'))
+
+        let selectedCard = selectedSet.filter(crd => {return crd.id === this.value})[0]
+        newCard.innerHTML = `<img src="${selectedCard.logo}.webp" alt="Picture of ${selectedCard.name}">`
+    })
+</script>
 
     <%- include("partials/footer.ejs") %>
