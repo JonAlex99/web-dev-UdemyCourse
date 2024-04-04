@@ -1,0 +1,26 @@
+<%- include('partials/header.ejs'); -%>
+
+    <div class="container">
+        <% if(locals.books) { %>
+            <% for(let book of books){ %>
+                <div class="items">
+                    <div class="book-cover">
+                        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg" alt="Cover of book">
+                    </div>
+                    <div class="book-text">
+                        <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam ipsum, incidunt unde quae vero quos suscipit officiis rerum accusantium qui consectetur perferendis ipsam dolorum totam aliquam quam ea inventore obcaecati optio quas cupiditate eaque. Nihil nesciunt commodi amet ad numquam totam illum rem, odio, ullam error sit consectetur libero officia corporis repellendus laboriosam assumenda exercitationem sed natus illo magni. Ipsa explicabo eum porro architecto dignissimos dicta. Mollitia in voluptates alias, vero corporis iste, cumque harum rem quisquam dolorum deleniti deserunt possimus odio sed esse architecto! Nobis totam sint quibusdam perspiciatis dolore aliquid facilis debitis eius aut est! Eaque, officiis perferendis!</p> -->
+                        <p><%= book.review %></p>
+                    </div>
+                    <div class="author-cover">
+                        <img src="https://covers.openlibrary.org/a/olid/<%= book.olid %>-M.jpg" alt="Photo of author">
+                    </div>
+                    <div class="author-text">
+                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fuga odio eligendi aliquid? Aut hic facere nulla nisi deleniti, ipsa id voluptatum rem aliquam eius, dolores cum commodi inventore consectetur quidem at facilis? Fugiat cupiditate dolor modi fuga ut similique pariatur tenetur a, corporis delectus ad necessitatibus voluptatum quis quam.</p> -->
+                        <%= book.author_bio%>
+                    </div>
+                </div>
+            <% };%>
+        <% } %>
+    </div>
+    
+<%- include('partials/footer.ejs'); -%>
